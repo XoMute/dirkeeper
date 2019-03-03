@@ -35,7 +35,6 @@ pub fn parse_config(args: &args::CLIArgs) -> Result<Vec<Rule>, String>{
         Err(err) => return Err(format!("Cant read config at {} with error {}", args.configpath,err))
     };
 
-
     let data:Vec<String> = conf.lines()
         .filter(|line| ! line.trim_start().starts_with('#'))
         .filter(|line| line.len() > 0)
@@ -43,6 +42,12 @@ pub fn parse_config(args: &args::CLIArgs) -> Result<Vec<Rule>, String>{
         .collect();
 
     Debug!("Config without comments - {:?}", data);
+
+
+    let mut lines = data.iter().enumerate();
+    while let Some((index, line)) = lines.next(){
+
+    }
 
 
 
