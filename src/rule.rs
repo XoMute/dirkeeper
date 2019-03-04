@@ -1,10 +1,10 @@
 
 
 
-
+#[derive(Debug)]
 pub struct Rule{
-    dir: String,
-    file: String,
-    action: String
+    pub dir: String,
+    pub file: String,
+    pub action: String
 
 }

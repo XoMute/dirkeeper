@@ -7,7 +7,7 @@ use std::env;
 pub struct CLIArgs{
 
     pub configpath: String,
-    test: bool
+    pub conf_manual: bool
 
 }
 
@@ -16,6 +16,7 @@ pub fn get_args() -> CLIArgs{
     let args:Vec<String> = env::args().collect();
 
     let mut conf_path: String = "".to_string();
+    let mut conf_manual = false;
 
     let mut iter = args.iter().skip(1);
     while let Some(v) = iter.next(){
@@ -23,6 +24,7 @@ pub fn get_args() -> CLIArgs{
             "-c" | "--config" => {
                 if let Some(value) = iter.next(){
                     conf_path = value.to_string();
+                    conf_manual = true;
                 }else{
                     panic!("Not enough arguments for --config");
                 }
@@ -40,7 +42,7 @@ pub fn get_args() -> CLIArgs{
 
     let args = CLIArgs{
         configpath: conf_path.to_string(),
-        test: false
+        conf_manual: conf_manual
     };
 
 
